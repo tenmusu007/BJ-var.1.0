@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>BlackJack</title>
+</head>
+<body>
+    <div class="box-1">
+        <h1>Black Jack</h1>
+        <div class="rule" id="rule-el">
+            <p>1. tap ' start '</p>
+            <p>2. want draw a card  tap<br> 
+                ' hit '</p>
+            <p>3. no need a card tap <br>
+                ' stand ' <br>
+                until you see the result</p>
+            <button class="got" id="got-el" onclick="startRule()">Got it </button>
+        </div>
+        <button class="read" id="read-el" onclick="againRule()">Read rule </button>
+        <div class="result" id="result-el">
+            Let's start. 
+        </div>
+        <div class="dealer-box">
+            <div class="dealer">Dealer</div>
+            <p id="dealer-el"></p>
+            <p id="dsum-el"></p>
+        </div>
+        <div class="player-box">
+            <div class="player">Player</div>
+            <p id="player-el"></p>
+            <p id="psum-el"></p>
+        </div>
+        <div class="button-box">
+            <button class="start" id = "start-btn"onclick="startCard();dealerStart()">Start</button>
+            <button class="hit" id ="hit-btn" onclick="newCard()">Hit</button>
+            <button class="stand" id ="stand-btn" onclick="skipCard()">Stand</button>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
