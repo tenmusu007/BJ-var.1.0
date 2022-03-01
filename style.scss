@@ -84,6 +84,14 @@ p{
                 font-style: italic;
                 display: inline-block;
             }
+            .pic-box{
+                display: flex;
+                justify-content: center;
+                .pic-0,.pic-1,.pic-2,.pic-3,.pic-4{
+                    padding-right: 10px;
+                    width: 100px;
+                }
+            }
             p{
                 display: flex;
                 justify-content: center;
