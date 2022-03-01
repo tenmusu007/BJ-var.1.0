@@ -1,11 +1,10 @@
 "use strict"
-let cards = []
+let cards = [1,2,3,4,5,6,7,8,9,10,11,12,13]
 let dcards =[]
-let K = 13
 let hands = cards.length
 let psum = 0
 let dsum = 0
-let isAlive = true
+let number = 0
 let hasBlackJack = false
 let drawCard = false
 let nodrawCard = true
@@ -21,6 +20,11 @@ let dsumEl = document.getElementById("dsum-el")
 let playerEl = document.getElementById("player-el")
 let resultEl = document.getElementById("result-el")
 let psumEl = document.getElementById("psum-el")
+let picEl = document.getElementById("pic-el")
+let picEl1 = document.getElementById("pic-el1")
+let picEl2 = document.getElementById("pic-el2")
+let picEl3 = document.getElementById("pic-el3")
+let picEl4 = document.getElementById("pic-el4")
 function startRule(){
     let ruleEl = document.getElementById('rule-el');
     ruleEl.classList.add('none');
@@ -46,6 +50,8 @@ function startCard(){
     let firstcard = getRandomCard()
     let secondcard = getRandomCard()
     cards = [firstcard, secondcard]
+    picEl.src ="image/club/card-c" + firstcard + ".png"
+    picEl1.src ="image/club/card-c" + secondcard + ".png"
     psum = firstcard + secondcard
     if (psum === 21){
         message = "You've got Black Jack"
@@ -53,14 +59,19 @@ function startCard(){
     resultEl.textContent = message
     renderGame()
 }
-function getRandomCard() {
-    let randomNumber = Math.floor( Math.random()*13 )+ 1
+function getRandomCard(){
+    let randomNumber = cards[ Math.floor( Math.random()*cards.length)]
     if (randomNumber > 10){
         return 10
     }else{
         return randomNumber
     } 
+    
 }
+// function picsystem(){
+//     let cardNumber = randomNumber
+//     picEl2.src ="image/club/card-c" + cardNumber  + ".png"
+// }
 function renderGame(){
     playerEl.textContent = "Cards: "
     for(let i = 0; i < cards.length; i++){
@@ -93,6 +104,7 @@ function newCard(){
         psum += card
         cards.push(card)
         message = "Do you want draw a card?"
+        picEl2.src ="image/club/card-c" + card  + ".png"
         renderGame()
     }else if(nodrawCard === true && drawCard === true){
         message = "Click start again"
