@@ -26,6 +26,11 @@ let picEl1 = document.getElementById("pic-el1")
 let picEl2 = document.getElementById("pic-el2")
 let picEl3 = document.getElementById("pic-el3")
 let picEl4 = document.getElementById("pic-el4")
+let dpicEl = document.getElementById("dpic-el")
+let dpicEl1 = document.getElementById("dpic-el1")
+let dpicEl2 = document.getElementById("dpic-el2")
+let dpicEl3 = document.getElementById("dpic-el3")
+let dpicEl4 = document.getElementById("dpic-el4")
 function startRule(){
     let ruleEl = document.getElementById('rule-el');
     ruleEl.classList.add('none');
@@ -39,10 +44,9 @@ function againRule(){
     let ruleEl = document.getElementById('rule-el');
     ruleEl.classList.remove('none');
 }
-
 function startCard(){
-    let randomType = Math.floor(Math.random()*type.length );
-    let randomType2 = Math.floor(Math.random()*type.length );
+    let randomType = Math.floor(Math.random()*4 );
+    let randomType2 = Math.floor(Math.random()*4 );
     let kindOftype= type[randomType];
     let kindOftype2= type[randomType2];
     picEl2.classList.add('none')
@@ -59,28 +63,21 @@ function startCard(){
     let secondcard = getRandomCard()
     picEl.src ="image/card-"+ kindOftype + firstcard + ".png"
     picEl1.src ="image/card-"+ kindOftype2 + secondcard + ".png"
-    let firstcard1 = getNewcard1()
-    let secondcard2 = getNewcard2()
+    let firstcard1 = getNewcard(firstcard)
+    let secondcard2 = getNewcard(secondcard)
     cards = [firstcard1, secondcard2]
     psum = firstcard1 + secondcard2
     resultEl.textContent = message
     renderGame()
-    function getNewcard1(){
-        if(firstcard >= 10){
-            return 10
-        }else if(firstcard <= 10){
-            return firstcard
-        }
-    }
-    function getNewcard2(){
-        if(secondcard >= 10){
-            return 10
-        }else if(secondcard <= 10){
-            return secondcard
-        }
+}
+// number will be confirmed more than 10 or not
+function getNewcard(cardNumber){
+    if(cardNumber>= 10){
+        return 10
+    }else if(cardNumber <= 10){
+        return cardNumber
     }
 }
-
 function getRandomCard(){
     let randomNumber = Math.floor( Math.random()*13 ) +1
     return randomNumber
@@ -114,17 +111,10 @@ function goresult(){
 function newCard(){
     if(drawCard === true && hasBlackJack === false){
         let card = getRandomCard()
-        let card1 = getNumber3()
-        function getNumber3(){
-            if(card >= 10){
-                return 10
-            }else if(card <= 10){
-                return card
-            }
-        }
+        let card1 = getNewcard(card)
         psum += card1
         cards.push(card1)
-        insertPic()
+        insertPic(card)
         message = "Do you want draw a card?"
     }else if(nodrawCard === true && drawCard === true){
         message = "Click start again"
@@ -132,44 +122,44 @@ function newCard(){
     resultEl.textContent = message
 }
 // card arrey からとってきてるから写真と数字が連動してる
-function insertPic (){
-    let randomType = Math.floor(Math.random()*type.length );
+function insertPic (num){
+    let randomType = Math.floor(Math.random()*4 );
     let kindOftype= type[randomType];
     if(cards.length === 3){
         picEl2.classList.remove('none')
-        picEl2.src ="image/card-" + kindOftype + cards[2] + ".png"
-        // picEl2.src ="image/all/card-" + cards[2] + ".png"
+        picEl2.src ="image/card-" + kindOftype + num + ".png"
         renderGame()
     }else if(cards.length === 4){
         picEl3.classList.remove('none')
-        picEl3.src ="image/card-" + kindOftype + cards[3]  + ".png"
-        // picEl3.src ="image/all/card-" + cards[3] + ".png"
+        picEl3.src ="image/card-" + kindOftype + num  + ".png"
         renderGame()
     }else if(cards.length === 5){
         picEl4.classList.remove('none')
-        picEl4.src ="image/card-"+ kindOftype  + cards[4]  + ".png"
-        // picEl4.src ="image/all/card-" + cards[4] + ".png"
+        picEl4.src ="image/card-"+ kindOftype  + num  + ".png"
         renderGame()
     }
 
 }
 
 function dealerStart(){
+    let randomType3 = Math.floor(Math.random()*4 );
+    let kindOftype3= type[randomType3];
     dealerdrawCard = true
     dealernodrawCard = false
     tie = false
+    dpicEl2.classList.add('none')
+    dpicEl3.classList.add('none')
+    dpicEl4.classList.add('none')
     let dealercard1 = getRandomDealerCard()
-    dcards = [dealercard1]
-    dsum = dealercard1
+    dpicEl.src ="image/card-"+ kindOftype3 + dealercard1 + ".png"
+    let dealerCrad = getNewcard(dealercard1)
+    dcards = [dealerCrad]
+    dsum = dealerCrad
     godealaer()
 }
 function getRandomDealerCard() {
     let randomNumber = Math.floor( Math.random()*13 )+ 1
-    if (randomNumber >10 ){
-        return 10
-    } else{
         return randomNumber
-    } 
 }
 function godealaer(){
     dealerEl.textContent = "Cards: "
@@ -190,8 +180,11 @@ function skipCard() {
     lose1 = true
     if(dsum < 17){
         let dcard = getRandomDealerCard()
-        dsum += dcard
-        dcards.push(dcard)
+        let dcard1 = getNewcatd(dcard)
+        dsum += dcard1
+        dcards.push(dcard1)
+        insertPic1(dcard)
+        
         godealaer()
     }else if(dsum > 21){
         dealernodrawCard = true
@@ -208,6 +201,7 @@ function skipCard() {
     }
     resultEl.textContent = message
 }
+
 function comparison(){
     if(dealerdrawCard === true && dealernodrawCard === true){
         message = "You win!"
