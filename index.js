@@ -140,6 +140,7 @@ function insertPic (num){
     }
 
 }
+// dealer zone 
 
 function dealerStart(){
     let randomType3 = Math.floor(Math.random()*4 );
@@ -202,7 +203,7 @@ function skipCard() {
     }
     resultEl.textContent = message
 }
-
+// isertpic 
 function insertPic1 (num){
     let randomType = Math.floor(Math.random()*4 );
     let kindOftype= type[randomType];

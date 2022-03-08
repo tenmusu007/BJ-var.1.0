@@ -181,31 +181,48 @@ p{
         }
         .dealer-box{
             .dealer{
-                font-size: 20px;
+                font-size: 15px;
                 color: #fff;
                 font-style: italic;
                 display: inline-block;
+            }
+            .pic-box1{
+                display: flex;
+                justify-content: center;
+                .pic-0,.pic-1,.pic-2,.pic-3,.pic-4{
+                    padding-right: 10px;
+                    width: 60px;
+                }
             }
             p{
                 display: flex;
                 justify-content: center;
                 color: #fff;
-                font-size: 25px;
+                font-size: 20px;
                 padding: 10px;
             }
+            
         }
         .player-box{
             .player{
-                font-size: 20px;
+                font-size: 15px;
                 color: #fff;
                 font-style: italic;
                 display: inline-block;
+            }
+            .pic-box{
+                display: flex;
+                justify-content: center;
+                .pic-0,.pic-1,.pic-2,.pic-3,.pic-4{
+                    padding-right: 10px;
+                    width: 60px;
+                }
             }
             p{
                 display: flex;
                 justify-content: center;
                 color: #fff;
-                font-size: 25px;
+                font-size: 20px;
                 padding: 10px;
             }
         }
@@ -221,7 +238,7 @@ p{
         .start,.hit,.stand{
             background-color: rgba(204, 119, 119, 0.679);
             border: 1px solid;
-            font-size: 30px;
+            font-size: 25px;
             border-radius: 15%;
             color: black;
         }
