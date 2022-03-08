@@ -147,6 +147,7 @@ function dealerStart(){
     dealerdrawCard = true
     dealernodrawCard = false
     tie = false
+    dpicEl1.classList.add('none')
     dpicEl2.classList.add('none')
     dpicEl3.classList.add('none')
     dpicEl4.classList.add('none')
@@ -180,7 +181,7 @@ function skipCard() {
     lose1 = true
     if(dsum < 17){
         let dcard = getRandomDealerCard()
-        let dcard1 = getNewcatd(dcard)
+        let dcard1 = getNewcard(dcard)
         dsum += dcard1
         dcards.push(dcard1)
         insertPic1(dcard)
@@ -202,6 +203,27 @@ function skipCard() {
     resultEl.textContent = message
 }
 
+function insertPic1 (num){
+    let randomType = Math.floor(Math.random()*4 );
+    let kindOftype= type[randomType];
+    if(dcards.length === 2){
+        dpicEl1.classList.remove('none')
+        dpicEl1.src ="image/card-" + kindOftype + num + ".png"
+        renderGame()
+    }else if(dcards.length === 3){
+        dpicEl2.classList.remove('none')
+        dpicEl2.src ="image/card-" + kindOftype + num  + ".png"
+        renderGame()
+    }else if(dcards.length === 4){
+        dpicEl3.classList.remove('none')
+        dpicEl3.src ="image/card-"+ kindOftype  + num  + ".png"
+        renderGame()
+    }else if(dcards.length === 5){
+        dpicEl4.classList.remove('none')
+        dpicEl4.src ="image/card-"+ kindOftype  + num  + ".png"
+        renderGame()
+    }
+}
 function comparison(){
     if(dealerdrawCard === true && dealernodrawCard === true){
         message = "You win!"
