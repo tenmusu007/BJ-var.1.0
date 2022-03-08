@@ -191,7 +191,7 @@ p{
                 justify-content: center;
                 .pic-0,.pic-1,.pic-2,.pic-3,.pic-4{
                     padding-right: 10px;
-                    width: 60px;
+                    width: 70px;
                 }
             }
             p{
@@ -215,7 +215,7 @@ p{
                 justify-content: center;
                 .pic-0,.pic-1,.pic-2,.pic-3,.pic-4{
                     padding-right: 10px;
-                    width: 60px;
+                    width: 70px;
                 }
             }
             p{
@@ -231,14 +231,14 @@ p{
             text-align: center;
             display: flex;
             justify-content: space-around;
-            flex-direction: column;
-            gap: 20px;
+            // flex-direction: column;
+            gap: 15px;
             margin: 0 auto;
         }
         .start,.hit,.stand{
             background-color: rgba(204, 119, 119, 0.679);
             border: 1px solid;
-            font-size: 25px;
+            font-size: 20px;
             border-radius: 15%;
             color: black;
         }
