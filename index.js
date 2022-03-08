@@ -1,6 +1,7 @@
 "use strict"
-let cards = [1,2,3,4,5,6,7,8,9,10,11,12,13]
+let cards = []
 let dcards =[]
+let type = ["c","d","h","s"]
 let hands = cards.length
 let psum = 0
 let dsum = 0
@@ -40,6 +41,13 @@ function againRule(){
 }
 
 function startCard(){
+    let randomType = Math.floor(Math.random()*type.length );
+    let randomType2 = Math.floor(Math.random()*type.length );
+    let kindOftype= type[randomType];
+    let kindOftype2= type[randomType2];
+    picEl2.classList.add('none')
+    picEl3.classList.add('none')
+    picEl4.classList.add('none')
     let hitEl = document.getElementById('hit-btn');
     hitEl.classList.remove('none')
     let standEl = document.getElementById('stand-btn');
@@ -49,29 +57,34 @@ function startCard(){
     hasBlackJack = false
     let firstcard = getRandomCard()
     let secondcard = getRandomCard()
-    cards = [firstcard, secondcard]
-    picEl.src ="image/club/card-c" + firstcard + ".png"
-    picEl1.src ="image/club/card-c" + secondcard + ".png"
-    psum = firstcard + secondcard
-    if (psum === 21){
-        message = "You've got Black Jack"
-    }
+    picEl.src ="image/card-"+ kindOftype + firstcard + ".png"
+    picEl1.src ="image/card-"+ kindOftype2 + secondcard + ".png"
+    let firstcard1 = getNewcard1()
+    let secondcard2 = getNewcard2()
+    cards = [firstcard1, secondcard2]
+    psum = firstcard1 + secondcard2
     resultEl.textContent = message
     renderGame()
+    function getNewcard1(){
+        if(firstcard >= 10){
+            return 10
+        }else if(firstcard <= 10){
+            return firstcard
+        }
+    }
+    function getNewcard2(){
+        if(secondcard >= 10){
+            return 10
+        }else if(secondcard <= 10){
+            return secondcard
+        }
+    }
 }
+
 function getRandomCard(){
-    let randomNumber = cards[ Math.floor( Math.random()*cards.length)]
-    if (randomNumber > 10){
-        return 10
-    }else{
-        return randomNumber
-    } 
-    
+    let randomNumber = Math.floor( Math.random()*13 ) +1
+    return randomNumber
 }
-// function picsystem(){
-//     let cardNumber = randomNumber
-//     picEl2.src ="image/club/card-c" + cardNumber  + ".png"
-// }
 function renderGame(){
     playerEl.textContent = "Cards: "
     for(let i = 0; i < cards.length; i++){
@@ -101,16 +114,46 @@ function goresult(){
 function newCard(){
     if(drawCard === true && hasBlackJack === false){
         let card = getRandomCard()
-        psum += card
-        cards.push(card)
+        let card1 = getNumber3()
+        function getNumber3(){
+            if(card >= 10){
+                return 10
+            }else if(card <= 10){
+                return card
+            }
+        }
+        psum += card1
+        cards.push(card1)
+        insertPic()
         message = "Do you want draw a card?"
-        picEl2.src ="image/club/card-c" + card  + ".png"
-        renderGame()
     }else if(nodrawCard === true && drawCard === true){
         message = "Click start again"
     }
     resultEl.textContent = message
 }
+// card arrey からとってきてるから写真と数字が連動してる
+function insertPic (){
+    let randomType = Math.floor(Math.random()*type.length );
+    let kindOftype= type[randomType];
+    if(cards.length === 3){
+        picEl2.classList.remove('none')
+        picEl2.src ="image/card-" + kindOftype + cards[2] + ".png"
+        // picEl2.src ="image/all/card-" + cards[2] + ".png"
+        renderGame()
+    }else if(cards.length === 4){
+        picEl3.classList.remove('none')
+        picEl3.src ="image/card-" + kindOftype + cards[3]  + ".png"
+        // picEl3.src ="image/all/card-" + cards[3] + ".png"
+        renderGame()
+    }else if(cards.length === 5){
+        picEl4.classList.remove('none')
+        picEl4.src ="image/card-"+ kindOftype  + cards[4]  + ".png"
+        // picEl4.src ="image/all/card-" + cards[4] + ".png"
+        renderGame()
+    }
+
+}
+
 function dealerStart(){
     dealerdrawCard = true
     dealernodrawCard = false
