@@ -12,7 +12,14 @@ p {
   display: none;
 }
 
-.box-1 h1 {
+.box-1 header .read {
+  background-color: rgba(204, 119, 119, 0.679);
+  border: 1px solid;
+  font-size: 20px;
+  border-radius: 15%;
+  color: black;
+}
+.box-1 header h1 {
   display: flex;
   justify-content: center;
   color: black;
@@ -24,13 +31,6 @@ p {
   border-radius: 15%;
   color: black;
   margin: 20px;
-}
-.box-1 .read {
-  background-color: rgba(204, 119, 119, 0.679);
-  border: 1px solid;
-  font-size: 20px;
-  border-radius: 15%;
-  color: black;
 }
 .box-1 .rule {
   width: 700px;
@@ -57,8 +57,11 @@ p {
   color: #c8ff00;
   text-align: center;
 }
+.box-1 .dealer-box .box {
+  display: flex;
+}
 .box-1 .dealer-box .dealer {
-  font-size: 35px;
+  font-size: 30px;
   color: #fff;
   font-style: italic;
   display: inline-block;
@@ -69,17 +72,15 @@ p {
 }
 .box-1 .dealer-box .pic-box1 .pic-0, .box-1 .dealer-box .pic-box1 .pic-1, .box-1 .dealer-box .pic-box1 .pic-2, .box-1 .dealer-box .pic-box1 .pic-3, .box-1 .dealer-box .pic-box1 .pic-4 {
   padding-right: 10px;
-  width: 100px;
+  width: 95px;
 }
 .box-1 .dealer-box p {
-  display: flex;
-  justify-content: center;
   color: #fff;
   font-size: 30px;
-  padding: 10px;
+  padding-left: 36.5%;
 }
 .box-1 .player-box .player {
-  font-size: 35px;
+  font-size: 30px;
   color: #fff;
   font-style: italic;
   display: inline-block;
@@ -88,16 +89,15 @@ p {
   display: flex;
   justify-content: center;
 }
-.box-1 .player-box .pic-box .pic-0, .box-1 .player-box .pic-box .pic-1, .box-1 .player-box .pic-box .pic-2, .box-1 .player-box .pic-box .pic-3, .box-1 .player-box .pic-box .pic-4 {
+.box-1 .player-box .pic-box .pimg {
   padding-right: 10px;
-  width: 100px;
+  width: 95px;
 }
 .box-1 .player-box p {
   display: flex;
   justify-content: center;
   color: #fff;
   font-size: 30px;
-  padding: 10px;
 }
 .box-1 .button-box {
   width: 50%;
@@ -188,7 +188,6 @@ p {
     justify-content: center;
     color: #fff;
     font-size: 20px;
-    padding: 10px;
   }
   .box-1 .player-box .player {
     font-size: 15px;
@@ -209,7 +208,6 @@ p {
     justify-content: center;
     color: #fff;
     font-size: 20px;
-    padding: 10px;
   }
   .box-1 .button-box {
     width: 50%;
