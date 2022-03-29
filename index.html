@@ -9,7 +9,10 @@
 </head>
 <body>
     <div class="box-1">
-        <h1>Black Jack</h1>
+        <header>
+            <button class="read" id="read-el" onclick="againRule()">Read rule </button>
+            <h1>Black Jack</h1>
+        </header>
         <div class="rule" id="rule-el">
             <p>1. tap ' start '</p>
             <p>2. want draw a card  tap<br> 
@@ -19,14 +22,15 @@
                 until you see the result</p>
             <button class="got" id="got-el" onclick="startRule()">Got it </button>
         </div>
-        <button class="read" id="read-el" onclick="againRule()">Read rule </button>
         <div class="result" id="result-el">
             Let's start. 
         </div>
         <div class="dealer-box">
-            <div class="dealer">Dealer</div>
-            <p id="dealer-el"></p>
-            <p id="dsum-el"></p>
+            <div class="box">
+                <div class="dealer">Dealer</div>
+                <p id="dsum-el"></p>
+                <p id="dealer-el"></p>
+            </div>
             <div class="pic-box1">
                 <div><img src = "" class="pic-0" id="dpic-el"></div>
                 <div><img src = "" class="pic-1" id="dpic-el1"></div>
@@ -38,11 +42,11 @@
         <div class="player-box">
             <div class="player">Player</div>
             <div class="pic-box">
-                <div><img src = "" class="pic-0" id="pic-el"></div>
-                <div><img src = "" class="pic-1" id="pic-el1"></div>
-                <div><img src = "" class="pic-2" id="pic-el2"></div>
-                <div><img src = "" class="pic-3" id="pic-el3"></div>
-                <div><img src = "" class="pic-4" id="pic-el4"></div>
+                <div><img src = "" class="pimg" id="pic-el"></div>
+                <div><img src = "" class="pimg" id="pic-el1"></div>
+                <div><img src = "" class="pimg" id="pic-el2"></div>
+                <div><img src = "" class="pimg" id="pic-el3"></div>
+                <div><img src = "" class="pimg" id="pic-el4"></div>
             </div>
             <p id="player-el"></p>
             <p id="psum-el"></p>

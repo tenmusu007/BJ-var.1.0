@@ -21,27 +21,34 @@ let dsumEl = document.getElementById("dsum-el")
 let playerEl = document.getElementById("player-el")
 let resultEl = document.getElementById("result-el")
 let psumEl = document.getElementById("psum-el")
-let picEl = document.getElementById("pic-el")
-let picEl1 = document.getElementById("pic-el1")
-let picEl2 = document.getElementById("pic-el2")
-let picEl3 = document.getElementById("pic-el3")
-let picEl4 = document.getElementById("pic-el4")
+// let picEl = document.getElementById("pic-el")
+// let picEl1 = document.getElementById("pic-el1")
+// let picEl2 = document.getElementById("pic-el2")
+// let picEl3 = document.getElementById("pic-el3")
+// let picEl4 = document.getElementById("pic-el4")
+let picEL = document.querySelectorAll('.pimg')
 let dpicEl = document.getElementById("dpic-el")
 let dpicEl1 = document.getElementById("dpic-el1")
 let dpicEl2 = document.getElementById("dpic-el2")
 let dpicEl3 = document.getElementById("dpic-el3")
 let dpicEl4 = document.getElementById("dpic-el4")
+let standEl = document.getElementById('stand-btn');
+let ruleEl = document.getElementById('rule-el');
+let hitEl = document.getElementById('hit-btn');
+// let ruleEl = document.getElementById('rule-el');
+// let hitEl = document.getElementById('hit-btn');
+// let hitEl = document.getElementById('hit-btn');
+// let standEl = document.getElementById('stand-btn');
+// let standEl = document.getElementById('stand-btn');
+// let hitEl = document.getElementById('hit-btn');
+// let hitEl = document.getElementById('hit-btn');
 function startRule(){
-    let ruleEl = document.getElementById('rule-el');
     ruleEl.classList.add('none');
-    let standEl = document.getElementById('stand-btn');
     standEl.classList.add('none')
-    let hitEl = document.getElementById('hit-btn');
     hitEl.classList.add('none')
 
 }
 function againRule(){
-    let ruleEl = document.getElementById('rule-el');
     ruleEl.classList.remove('none');
 }
 function startCard(){
@@ -49,20 +56,18 @@ function startCard(){
     let randomType2 = Math.floor(Math.random()*4 );
     let kindOftype= type[randomType];
     let kindOftype2= type[randomType2];
-    picEl2.classList.add('none')
-    picEl3.classList.add('none')
-    picEl4.classList.add('none')
-    let hitEl = document.getElementById('hit-btn');
+    picEL[2].classList.add('none')
+    picEL[3].classList.add('none')
+    picEL[4].classList.add('none')
     hitEl.classList.remove('none')
-    let standEl = document.getElementById('stand-btn');
     standEl.classList.remove('none')
     message ="Do you want draw a card? tap 'Hit' "
     drawCard = true
     hasBlackJack = false
     let firstcard = getRandomCard()
     let secondcard = getRandomCard()
-    picEl.src ="image/card-"+ kindOftype + firstcard + ".png"
-    picEl1.src ="image/card-"+ kindOftype2 + secondcard + ".png"
+    picEL[0].src ="image/card-"+ kindOftype + firstcard + ".png"
+    picEL[1].src ="image/card-"+ kindOftype2 + secondcard + ".png"
     let firstcard1 = getNewcard(firstcard)
     let secondcard2 = getNewcard(secondcard)
     cards = [firstcard1, secondcard2]
@@ -83,10 +88,10 @@ function getRandomCard(){
     return randomNumber
 }
 function renderGame(){
-    playerEl.textContent = "Cards: "
-    for(let i = 0; i < cards.length; i++){
-        playerEl.textContent +=cards[i] + " "
-    }
+    // playerEl.textContent = "Cards: "
+    // for(let i = 0; i < cards.length; i++){
+    //     playerEl.textContent +=cards[i] + " "
+    // }
     psumEl.textContent = "Sum: " + psum
     goresult()
 }
@@ -100,9 +105,7 @@ function goresult(){
     }else if(psum > 21){
         nodrawCard = false
         message = "You Bust"
-        let standEl = document.getElementById('stand-btn');
         standEl.classList.add('none')
-        let hitEl = document.getElementById('hit-btn');
         hitEl.classList.add('none')
     }else if (psum < 21){
         drawCard = true
@@ -126,16 +129,16 @@ function insertPic (num){
     let randomType = Math.floor(Math.random()*4 );
     let kindOftype= type[randomType];
     if(cards.length === 3){
-        picEl2.classList.remove('none')
-        picEl2.src ="image/card-" + kindOftype + num + ".png"
+        picEL[2].classList.remove('none')
+        picEL[2].src ="image/card-" + kindOftype + num + ".png"
         renderGame()
     }else if(cards.length === 4){
-        picEl3.classList.remove('none')
-        picEl3.src ="image/card-" + kindOftype + num  + ".png"
+        picEL[3].classList.remove('none')
+        picEL[3].src ="image/card-" + kindOftype + num  + ".png"
         renderGame()
     }else if(cards.length === 5){
-        picEl4.classList.remove('none')
-        picEl4.src ="image/card-"+ kindOftype  + num  + ".png"
+        picEL[4].classList.remove('none')
+        picEL[4].src ="image/card-"+ kindOftype  + num  + ".png"
         renderGame()
     }
 
@@ -144,7 +147,7 @@ function insertPic (num){
 
 function dealerStart(){
     let randomType3 = Math.floor(Math.random()*4 );
-    let kindOftype3= type[randomType3];
+    let kindOfType3= type[randomType3];
     dealerdrawCard = true
     dealernodrawCard = false
     tie = false
@@ -152,26 +155,21 @@ function dealerStart(){
     dpicEl2.classList.add('none')
     dpicEl3.classList.add('none')
     dpicEl4.classList.add('none')
-    let dealercard1 = getRandomDealerCard()
-    dpicEl.src ="image/card-"+ kindOftype3 + dealercard1 + ".png"
+    let dealercard1 = Math.floor( Math.random()*13 )+ 1
+    dpicEl.src ="image/card-"+ kindOfType3 + dealercard1 + ".png"
     let dealerCrad = getNewcard(dealercard1)
     dcards = [dealerCrad]
     dsum = dealerCrad
     godealaer()
 }
-function getRandomDealerCard() {
-    let randomNumber = Math.floor( Math.random()*13 )+ 1
-        return randomNumber
-}
+// function getRandomDealerCard() {
+//     let randomNumber = Math.floor( Math.random()*13 )+ 1
+//         return randomNumber
+// }
 function godealaer(){
-    dealerEl.textContent = "Cards: "
-    for(let i  =0; i < dcards.length; i ++){
-        dealerEl.textContent +=dcards[i] + " "
-    }
     dsumEl.textContent = "Sum: " + dsum
 }
 function skipCard() {
-    let hitEl = document.getElementById('hit-btn');
     hitEl.classList.add('none')
     message ="tap 'stand' until the result"
     dealerdrawCard = true
@@ -181,7 +179,8 @@ function skipCard() {
     lose = true
     lose1 = true
     if(dsum < 17){
-        let dcard = getRandomDealerCard()
+        // let dcard = getRandomDealerCard()
+        let dcard = Math.floor( Math.random()*13 )+ 1
         let dcard1 = getNewcard(dcard)
         dsum += dcard1
         dcards.push(dcard1)
@@ -238,6 +237,5 @@ function comparison(){
         message = "You Lose"
     }
     resultEl.textContent = message
-    let standEl = document.getElementById('stand-btn');
         standEl.classList.add('none')
 }

@@ -17,10 +17,19 @@ p{
     display: none;
 }
 .box-1{
-        h1{
-            display: flex;
-            justify-content: center;
-            color: rgb(0, 0, 0);
+        header{
+            .read{
+                background-color: rgba(204, 119, 119, 0.679);
+                border: 1px solid;
+                font-size: 20px;
+                border-radius: 15%;
+                color: black;
+            }
+            h1{
+                display: flex;
+                justify-content: center;
+                color: rgb(0, 0, 0);
+            }
         }
         .got{
             background-color: rgba(204, 119, 119, 0.679);
@@ -29,13 +38,6 @@ p{
             border-radius: 15%;
             color: black;
             margin: 20px;
-        }
-        .read{
-            background-color: rgba(204, 119, 119, 0.679);
-            border: 1px solid;
-            font-size: 20px;
-            border-radius: 15%;
-            color: black;
         }
         .rule{
             width: 700px;
@@ -63,8 +65,11 @@ p{
             text-align: center;
         }
         .dealer-box{
+            .box{
+                display: flex;
+            }
             .dealer{
-                font-size: 35px;
+                font-size: 30px;
                 color: #fff;
                 font-style: italic;
                 display: inline-block;
@@ -74,20 +79,18 @@ p{
                 justify-content: center;
                 .pic-0,.pic-1,.pic-2,.pic-3,.pic-4{
                     padding-right: 10px;
-                    width: 100px;
+                    width: 95px;
                 }
             }
             p{
-                display: flex;
-                justify-content: center;
                 color: #fff;
                 font-size: 30px;
-                padding: 10px;
+                padding-left: 36.5%;
             }
         }
         .player-box{
             .player{
-                font-size: 35px;
+                font-size: 30px;
                 color: #fff;
                 font-style: italic;
                 display: inline-block;
@@ -95,9 +98,9 @@ p{
             .pic-box{
                 display: flex;
                 justify-content: center;
-                .pic-0,.pic-1,.pic-2,.pic-3,.pic-4{
+                .pimg{
                     padding-right: 10px;
-                    width: 100px;
+                    width: 95px;
                 }
             }
             p{
@@ -105,7 +108,6 @@ p{
                 justify-content: center;
                 color: #fff;
                 font-size: 30px;
-                padding: 10px;
             }
         }
         .button-box{
@@ -199,7 +201,6 @@ p{
                 justify-content: center;
                 color: #fff;
                 font-size: 20px;
-                padding: 10px;
             }
             
         }
@@ -223,7 +224,6 @@ p{
                 justify-content: center;
                 color: #fff;
                 font-size: 20px;
-                padding: 10px;
             }
         }
         .button-box{
