@@ -16,32 +16,22 @@ let win = false
 let lose = true
 let lose1 = true
 let message = " "
-let dealerEl = document.getElementById("dealer-el")
+// let dealerEl = document.getElementById("dealer-el")
 let dsumEl = document.getElementById("dsum-el")
 let playerEl = document.getElementById("player-el")
 let resultEl = document.getElementById("result-el")
 let psumEl = document.getElementById("psum-el")
-// let picEl = document.getElementById("pic-el")
-// let picEl1 = document.getElementById("pic-el1")
-// let picEl2 = document.getElementById("pic-el2")
-// let picEl3 = document.getElementById("pic-el3")
-// let picEl4 = document.getElementById("pic-el4")
 let picEL = document.querySelectorAll('.pimg')
-let dpicEl = document.getElementById("dpic-el")
-let dpicEl1 = document.getElementById("dpic-el1")
-let dpicEl2 = document.getElementById("dpic-el2")
-let dpicEl3 = document.getElementById("dpic-el3")
-let dpicEl4 = document.getElementById("dpic-el4")
+let dpicEl = document.querySelectorAll('.dimg')
+// let dpicEl = document.getElementById("dpic-el")
+// let dpicEl1 = document.getElementById("dpic-el1")
+// let dpicEl2 = document.getElementById("dpic-el2")
+// let dpicEl3 = document.getElementById("dpic-el3")
+// let dpicEl4 = document.getElementById("dpic-el4")
 let standEl = document.getElementById('stand-btn');
 let ruleEl = document.getElementById('rule-el');
 let hitEl = document.getElementById('hit-btn');
-// let ruleEl = document.getElementById('rule-el');
-// let hitEl = document.getElementById('hit-btn');
-// let hitEl = document.getElementById('hit-btn');
-// let standEl = document.getElementById('stand-btn');
-// let standEl = document.getElementById('stand-btn');
-// let hitEl = document.getElementById('hit-btn');
-// let hitEl = document.getElementById('hit-btn');
+
 function startRule(){
     ruleEl.classList.add('none');
     standEl.classList.add('none')
@@ -151,12 +141,12 @@ function dealerStart(){
     dealerdrawCard = true
     dealernodrawCard = false
     tie = false
-    dpicEl1.classList.add('none')
-    dpicEl2.classList.add('none')
-    dpicEl3.classList.add('none')
-    dpicEl4.classList.add('none')
+    dpicEl[1].classList.add('none')
+    dpicEl[2].classList.add('none')
+    dpicEl[3].classList.add('none')
+    dpicEl[4].classList.add('none')
     let dealercard1 = Math.floor( Math.random()*13 )+ 1
-    dpicEl.src ="image/card-"+ kindOfType3 + dealercard1 + ".png"
+    dpicEl[0].src ="image/card-"+ kindOfType3 + dealercard1 + ".png"
     let dealerCrad = getNewcard(dealercard1)
     dcards = [dealerCrad]
     dsum = dealerCrad
@@ -207,20 +197,20 @@ function insertPic1 (num){
     let randomType = Math.floor(Math.random()*4 );
     let kindOftype= type[randomType];
     if(dcards.length === 2){
-        dpicEl1.classList.remove('none')
-        dpicEl1.src ="image/card-" + kindOftype + num + ".png"
+        dpicEl[1].classList.remove('none')
+        dpicEl[1].src ="image/card-" + kindOftype + num + ".png"
         renderGame()
     }else if(dcards.length === 3){
-        dpicEl2.classList.remove('none')
-        dpicEl2.src ="image/card-" + kindOftype + num  + ".png"
+        dpicEl[2].classList.remove('none')
+        dpicEl[2].src ="image/card-" + kindOftype + num  + ".png"
         renderGame()
     }else if(dcards.length === 4){
-        dpicEl3.classList.remove('none')
-        dpicEl3.src ="image/card-"+ kindOftype  + num  + ".png"
+        dpicEl[3].classList.remove('none')
+        dpicEl[3].src ="image/card-"+ kindOftype  + num  + ".png"
         renderGame()
     }else if(dcards.length === 5){
-        dpicEl4.classList.remove('none')
-        dpicEl4.src ="image/card-"+ kindOftype  + num  + ".png"
+        dpicEl[4].classList.remove('none')
+        dpicEl[4].src ="image/card-"+ kindOftype  + num  + ".png"
         renderGame()
     }
 }

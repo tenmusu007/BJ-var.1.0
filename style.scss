@@ -65,9 +65,6 @@ p{
             text-align: center;
         }
         .dealer-box{
-            .box{
-                display: flex;
-            }
             .dealer{
                 font-size: 30px;
                 color: #fff;
@@ -77,15 +74,16 @@ p{
             .pic-box1{
                 display: flex;
                 justify-content: center;
-                .pic-0,.pic-1,.pic-2,.pic-3,.pic-4{
+                .dimg{
                     padding-right: 10px;
                     width: 95px;
                 }
             }
             p{
                 color: #fff;
-                font-size: 30px;
-                padding-left: 36.5%;
+                font-size: 20px;
+                text-align: center;
+                
             }
         }
         .player-box{
@@ -107,7 +105,7 @@ p{
                 display: flex;
                 justify-content: center;
                 color: #fff;
-                font-size: 30px;
+                font-size: 20px;
             }
         }
         .button-box{
