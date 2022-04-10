@@ -176,9 +176,9 @@ p {
     display: flex;
     justify-content: center;
   }
-  .box-1 .dealer-box .pic-box1 .pic-0, .box-1 .dealer-box .pic-box1 .pic-1, .box-1 .dealer-box .pic-box1 .pic-2, .box-1 .dealer-box .pic-box1 .pic-3, .box-1 .dealer-box .pic-box1 .pic-4 {
+  .box-1 .dealer-box .pic-box1 .dimg {
     padding-right: 10px;
-    width: 70px;
+    width: 65px;
   }
   .box-1 .dealer-box p {
     display: flex;
@@ -196,9 +196,9 @@ p {
     display: flex;
     justify-content: center;
   }
-  .box-1 .player-box .pic-box .pic-0, .box-1 .player-box .pic-box .pic-1, .box-1 .player-box .pic-box .pic-2, .box-1 .player-box .pic-box .pic-3, .box-1 .player-box .pic-box .pic-4 {
+  .box-1 .player-box .pic-box .pimg {
     padding-right: 10px;
-    width: 70px;
+    width: 65px;
   }
   .box-1 .player-box p {
     display: flex;
