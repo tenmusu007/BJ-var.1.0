@@ -16,18 +16,12 @@ let win = false
 let lose = true
 let lose1 = true
 let message = " "
-// let dealerEl = document.getElementById("dealer-el")
 let dsumEl = document.getElementById("dsum-el")
 let playerEl = document.getElementById("player-el")
 let resultEl = document.getElementById("result-el")
 let psumEl = document.getElementById("psum-el")
 let picEL = document.querySelectorAll('.pimg')
 let dpicEl = document.querySelectorAll('.dimg')
-// let dpicEl = document.getElementById("dpic-el")
-// let dpicEl1 = document.getElementById("dpic-el1")
-// let dpicEl2 = document.getElementById("dpic-el2")
-// let dpicEl3 = document.getElementById("dpic-el3")
-// let dpicEl4 = document.getElementById("dpic-el4")
 let standEl = document.getElementById('stand-btn');
 let ruleEl = document.getElementById('rule-el');
 let hitEl = document.getElementById('hit-btn');
@@ -63,7 +57,8 @@ function startCard(){
     cards = [firstcard1, secondcard2]
     psum = firstcard1 + secondcard2
     resultEl.textContent = message
-    renderGame()
+    psumEl.textContent = "Sum: " + psum
+    goresult()
 }
 // number will be confirmed more than 10 or not
 function getNewcard(cardNumber){
@@ -78,10 +73,6 @@ function getRandomCard(){
     return randomNumber
 }
 function renderGame(){
-    // playerEl.textContent = "Cards: "
-    // for(let i = 0; i < cards.length; i++){
-    //     playerEl.textContent +=cards[i] + " "
-    // }
     psumEl.textContent = "Sum: " + psum
     goresult()
 }
@@ -92,14 +83,17 @@ function goresult(){
     if(psum === 21){
         hasBlackJack = true
         message = "You've got Black Jack"
+        // resultEl.textContent = message
     }else if(psum > 21){
         nodrawCard = false
         message = "You Bust"
+        resultEl.textContent = message
         standEl.classList.add('none')
         hitEl.classList.add('none')
     }else if (psum < 21){
         drawCard = true
     }
+    resultEl.textContent = message
 }
 function newCard(){
     if(drawCard === true && hasBlackJack === false){
@@ -108,7 +102,6 @@ function newCard(){
         psum += card1
         cards.push(card1)
         insertPic(card)
-        message = "Do you want draw a card?"
     }else if(nodrawCard === true && drawCard === true){
         message = "Click start again"
     }
@@ -150,39 +143,38 @@ function dealerStart(){
     let dealerCrad = getNewcard(dealercard1)
     dcards = [dealerCrad]
     dsum = dealerCrad
-    godealaer()
-}
-// function getRandomDealerCard() {
-//     let randomNumber = Math.floor( Math.random()*13 )+ 1
-//         return randomNumber
-// }
-function godealaer(){
     dsumEl.textContent = "Sum: " + dsum
+    // godealaer()
 }
+// function godealaer(){
+//     dsumEl.textContent = "Sum: " + dsum
+// }
 function skipCard() {
     hitEl.classList.add('none')
-    message ="tap 'stand' until the result"
+    // message ="tap 'stand' until the result"
     dealerdrawCard = true
     dealernodrawCard = false
-    tie = false
-    win = false
-    lose = true
-    lose1 = true
-    if(dsum < 17){
-        // let dcard = getRandomDealerCard()
-        let dcard = Math.floor( Math.random()*13 )+ 1
-        let dcard1 = getNewcard(dcard)
-        dsum += dcard1
-        dcards.push(dcard1)
-        insertPic1(dcard)
-        
-        godealaer()
-    }else if(dsum > 21){
-        dealernodrawCard = true
-        comparison()
-    }else if(dsum === psum){
-        tie = true
-        comparison()
+    if(dsum <= 17){
+        for(let i =0; dsum <=17; i ++){
+            let dcard = Math.floor( Math.random()*13 )+ 1
+            let dcard1 = getNewcard(dcard)
+            dsum += dcard1
+            dcards.push(dcard1)
+            insertPic1(dcard)
+            dsumEl.textContent = "Sum: " + dsum
+            if (dsum >=17 && dsum <= 21){
+                if(dsum === psum){
+                    tie = true
+                    comparison()
+                }else if (dsum < psum){
+                    dealerdrawCard = false
+                    comparison()
+                }
+            }else if(dsum > 21){
+                dealernodrawCard = true
+                comparison()
+            }
+        }
     }else if (dsum < psum){
         dealerdrawCard = false
         comparison()
