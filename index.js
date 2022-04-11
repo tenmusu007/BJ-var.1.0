@@ -62,9 +62,11 @@ function startCard() {
 }
 // number will be confirmed more than 10 or not
 function getNewcard(cardNumber) {
-    if (cardNumber >= 10) {
+    if(cardNumber === 1){
+        return 11
+    }else if (cardNumber >= 10) {
         return 10
-    } else if (cardNumber <= 10) {
+    } else if (cardNumber <= 10 && cardNumber >= 2) {
         return cardNumber
     }
 }
@@ -129,6 +131,7 @@ function insertPic(num) {
 // dealer zone 
 
 function dealerStart() {
+    dsumEl.classList.add('none')
     let randomType3 = Math.floor(Math.random() * 4);
     let kindOfType3 = type[randomType3];
     dealerdrawCard = true
@@ -143,12 +146,7 @@ function dealerStart() {
     let dealerCrad = getNewcard(dealercard1)
     dcards = [dealerCrad]
     dsum = dealerCrad
-    dsumEl.textContent = "Sum: " + dsum
-    // godealaer()
 }
-// function godealaer(){
-//     dsumEl.textContent = "Sum: " + dsum
-// }
 function skipCard() {
     hitEl.classList.add('none')
     // message ="tap 'stand' until the result"
@@ -161,57 +159,64 @@ function skipCard() {
             dsum += dcard1
             dcards.push(dcard1)
             insertPic1(dcard)
-            dsumEl.textContent = "Sum: " + dsum
+            // dsumEl.textContent = "Sum: " + dsum
             if (dsum >= 17 && dsum <= 21) {
                 if (dsum === psum) {
                     tie = true
-                    comparison()
                 } else if (dsum < psum) {
                     dealerdrawCard = false
-                    comparison()
-                }else if (dsum > psum){
+                } else if (dsum > psum) {
                     lose1 = true
-                    comparison()
                 }
             } else if (dsum > 21) {
                 dealernodrawCard = true
-                comparison()
             }
         }
+
     } else if (dsum > 17) {
         if (dsum < psum) {
             dealerdrawCard = false
-            comparison()
         } else if (dsum > psum) {
             lose1 = false
-            comparison()
         }
     }
+
     resultEl.textContent = message
 }
-// isertpic 
 function insertPic1(num) {
     let randomType = Math.floor(Math.random() * 4);
     let kindOftype = type[randomType];
+    // setTimeout(() => {
     if (dcards.length === 2) {
-        dpicEl[1].classList.remove('none')
-        dpicEl[1].src = "image/card-" + kindOftype + num + ".png"
-        renderGame()
+        setTimeout(() => {
+            dpicEl[1].classList.remove('none')
+            dpicEl[1].src = "image/card-" + kindOftype + num + ".png"
+        }, 1000)
     } else if (dcards.length === 3) {
-        dpicEl[2].classList.remove('none')
-        dpicEl[2].src = "image/card-" + kindOftype + num + ".png"
-        renderGame()
+        setTimeout(() => {
+            dpicEl[2].classList.remove('none')
+            dpicEl[2].src = "image/card-" + kindOftype + num + ".png"
+        }, 1500)
     } else if (dcards.length === 4) {
-        dpicEl[3].classList.remove('none')
-        dpicEl[3].src = "image/card-" + kindOftype + num + ".png"
-        renderGame()
+        setTimeout(() => {
+            dpicEl[3].classList.remove('none')
+            dpicEl[3].src = "image/card-" + kindOftype + num + ".png"
+        }, 2000)
     } else if (dcards.length === 5) {
-        dpicEl[4].classList.remove('none')
-        dpicEl[4].src = "image/card-" + kindOftype + num + ".png"
-        renderGame()
+        setTimeout(() => {
+            dpicEl[4].classList.remove('none')
+            dpicEl[4].src = "image/card-" + kindOftype + num + ".png"
+        }, 2500)
     }
+    setTimeout(() => {
+        comparison()
+    }, 2500)
 }
+
+
 function comparison() {
+    dsumEl.classList.remove('none')
+    dsumEl.textContent = "Sum: " + dsum
     if (dealerdrawCard === true && dealernodrawCard === true) {
         message = "You win!"
     } else if (dealerdrawCard === true && tie === true) {
