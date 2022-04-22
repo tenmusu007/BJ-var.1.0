@@ -28,15 +28,17 @@ let standEl = document.getElementById('stand-btn');
 let ruleEl = document.getElementById('rule-el');
 let hitEl = document.getElementById('hit-btn');
 
+// close rule
 function startRule() {
     ruleEl.classList.add('none');
     standEl.classList.add('none')
     hitEl.classList.add('none')
-
 }
+// show rule again
 function againRule() {
     ruleEl.classList.remove('none');
 }
+// player starts to play
 function startCard() {
     let randomType = Math.floor(Math.random() * 4);
     let randomType2 = Math.floor(Math.random() * 4);
@@ -48,6 +50,7 @@ function startCard() {
     picEL[4].classList.add('none')
     hitEl.classList.remove('none')
     standEl.classList.remove('none')
+    console.log(hitEl)
     message = "Do you want draw a card? tap 'Hit' "
     drawCard = true
     hasBlackJack = false
@@ -63,7 +66,7 @@ function startCard() {
     psumEl.textContent = "Sum: " + psum
     goresult()
 }
-// number will be confirmed more than 10 or not
+// number will be confirmed more than 10 or not and having Ace or not 
 function getNewcard(cardNumber) {
     if (cardNumber === 1) {
         return 11
@@ -77,15 +80,10 @@ function getRandomCard() {
     let randomNumber = Math.floor(Math.random() * 13) + 1
     return randomNumber
 }
-function renderGame() {
-    atsu()
-    psumEl.textContent = "Sum: " + newpsum
-    goresult()
-}
+
+// check result
 function goresult() {
-    hasBlackJack = false
-    drawCard = false
-    nodrawCard = true
+    aceSystem()
     if (newpsum === 21) {
         hasBlackJack = true
         message = "You've got Black Jack"
@@ -101,47 +99,56 @@ function goresult() {
     }
     resultEl.textContent = message
 }
+// draw cards and push new card to player hands
 function newCard() {
     if (drawCard === true && hasBlackJack === false) {
         let card = getRandomCard()
         let card1 = getNewcard(card)
         psum += card1
         cards.push(card1)
-        // ace =cards.includes(11)
-        // atsu()
         insertPic(card)
     } else if (nodrawCard === true && drawCard === true) {
         message = "Click start again"
     }
     resultEl.textContent = message
 }
-console.log(ace)
-const atsu = () => {
+// checking player has Ace or not  
+const aceSystem = () => {
     if (cards.includes(11)) {
         if (psum > 21) {
             newpsum = psum - 10
+        }else{
+            newpsum =  psum + 0
         }
     }else{
-        newpsum = psum
+        newpsum =  psum + 0
     }
+    // psumEl.textContent = "Sum: " + newpsum
 }
-// card arrey からとってきてるから写真と数字が連動してる
+//show card pic
 function insertPic(num) {
     let randomType = Math.floor(Math.random() * 4);
     let kindOftype = type[randomType];
     if (cards.length === 3) {
-        picEL[2].classList.remove('none')
-        picEL[2].src = "image/card-" + kindOftype + num + ".png"
-        renderGame()
+        setTimeout(()=>{
+            picEL[2].classList.remove('none')
+            picEL[2].src = "image/card-" + kindOftype + num + ".png"
+            psumEl.textContent = "Sum: " + newpsum
+        },1000)
     } else if (cards.length === 4) {
-        picEL[3].classList.remove('none')
-        picEL[3].src = "image/card-" + kindOftype + num + ".png"
-        renderGame()
+        setTimeout(()=>{
+            picEL[3].classList.remove('none')
+            picEL[3].src = "image/card-" + kindOftype + num + ".png"
+            psumEl.textContent = "Sum: " + newpsum
+        },1200)
     } else if (cards.length === 5) {
-        picEL[4].classList.remove('none')
-        picEL[4].src = "image/card-" + kindOftype + num + ".png"
-        renderGame()
+        setTimeout(()=>{
+            picEL[4].classList.remove('none')
+            picEL[4].src = "image/card-" + kindOftype + num + ".png"
+            psumEl.textContent = "Sum: " + newpsum
+        },1400)
     }
+    goresult()
 
 }
 // dealer zone 
@@ -165,17 +172,16 @@ function dealerStart() {
 }
 function skipCard() {
     hitEl.classList.add('none')
-    // message ="tap 'stand' until the result"
     dealerdrawCard = true
     dealernodrawCard = false
     if (dsum <= 16) {
         for (let i = 0; dsum <= 16; i++) {
+            // dealer starts to draw
             let dcard = Math.floor(Math.random() * 13) + 1
             let dcard1 = getNewcard(dcard)
             dsum += dcard1
             dcards.push(dcard1)
             insertPic1(dcard)
-            // dsumEl.textContent = "Sum: " + dsum
             if (dsum >= 17 && dsum <= 21) {
                 if (dsum === newpsum) {
                     tie = true
@@ -199,10 +205,10 @@ function skipCard() {
 
     resultEl.textContent = message
 }
+// insert dealer pic
 function insertPic1(num) {
     let randomType = Math.floor(Math.random() * 4);
     let kindOftype = type[randomType];
-    // setTimeout(() => {
     if (dcards.length === 2) {
         setTimeout(() => {
             dpicEl[1].classList.remove('none')
@@ -229,7 +235,7 @@ function insertPic1(num) {
     }, 2500)
 }
 
-
+// check final result
 function comparison() {
     dsumEl.classList.remove('none')
     dsumEl.textContent = "Sum: " + dsum
@@ -247,3 +253,9 @@ function comparison() {
     resultEl.textContent = message
     standEl.classList.add('none')
 }
+console.log(psum)
+console.log(newpsum)
+console.log(cards)
+console.log(dsum)
+console.log(dcards)
+console.log(cards.includes(11))
