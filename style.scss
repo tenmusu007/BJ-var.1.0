@@ -26,6 +26,7 @@ p{
                 color: black;
             }
             h1{
+                margin: 0.5rem;
                 display: flex;
                 justify-content: center;
                 color: rgb(0, 0, 0);
@@ -59,17 +60,14 @@ p{
         .result{
             display: flex;
             justify-content: center;
-            padding: 20px;
-            font-size: 45px;
+            padding: 0px 20px;
+            font-size: 30px;
             color: rgb(200, 255, 0);
             text-align: center;
         }
         .dealer-box{
-            .box{
-                display: flex;
-            }
             .dealer{
-                font-size: 30px;
+                font-size: 20px;
                 color: #fff;
                 font-style: italic;
                 display: inline-block;
@@ -77,20 +75,21 @@ p{
             .pic-box1{
                 display: flex;
                 justify-content: center;
-                .pic-0,.pic-1,.pic-2,.pic-3,.pic-4{
+                .dimg{
                     padding-right: 10px;
                     width: 95px;
                 }
             }
             p{
                 color: #fff;
-                font-size: 30px;
-                padding-left: 36.5%;
+                font-size: 20px;
+                text-align: center;
+                
             }
         }
         .player-box{
             .player{
-                font-size: 30px;
+                font-size: 20px;
                 color: #fff;
                 font-style: italic;
                 display: inline-block;
@@ -107,7 +106,7 @@ p{
                 display: flex;
                 justify-content: center;
                 color: #fff;
-                font-size: 30px;
+                font-size: 20px;
             }
         }
         .button-box{
@@ -120,7 +119,7 @@ p{
         .start,.hit,.stand{
             background-color: rgba(204, 119, 119, 0.679);
             border: 1px solid;
-            font-size: 40px;
+            font-size: 35px;
             border-radius: 15%;
             color: black;
         }
@@ -177,7 +176,7 @@ p{
             display: flex;
             justify-content: center;
             padding: 20px;
-            font-size: 30px;
+            font-size: 20px;
             color: rgb(200, 255, 0);
             text-align: center;
         }
@@ -191,9 +190,9 @@ p{
             .pic-box1{
                 display: flex;
                 justify-content: center;
-                .pic-0,.pic-1,.pic-2,.pic-3,.pic-4{
+                .dimg{
                     padding-right: 10px;
-                    width: 70px;
+                    width: 65px;
                 }
             }
             p{
@@ -214,9 +213,9 @@ p{
             .pic-box{
                 display: flex;
                 justify-content: center;
-                .pic-0,.pic-1,.pic-2,.pic-3,.pic-4{
+                .pimg{
                     padding-right: 10px;
-                    width: 70px;
+                    width: 65px;
                 }
             }
             p{
