@@ -239,18 +239,20 @@ function insertPic1(num) {
 function comparison() {
     dsumEl.classList.remove('none')
     dsumEl.textContent = "Sum: " + dsum
-    if (dealerdrawCard === true && dealernodrawCard === true) {
-        message = "You win!"
-    } else if (dealerdrawCard === true && tie === true) {
-        message = "Tie"
-    } else if (dealerdrawCard === true && dealernodrawCard === false) {
-        message = "You lose"
-    } else if (dealerdrawCard === false) {
-        message = "You win!"
-    } else if (lose1 = false && dealerdrawCard === true) {
-        message = "You Lose"
-    }
-    resultEl.textContent = message
+    setTimeout(() =>{
+        if (dealerdrawCard === true && dealernodrawCard === true) {
+            message = "You win!"
+        } else if (dealerdrawCard === true && tie === true) {
+            message = "Tie"
+        } else if (dealerdrawCard === true && dealernodrawCard === false) {
+            message = "You lose"
+        } else if (dealerdrawCard === false) {
+            message = "You win!"
+        } else if (lose1 = false && dealerdrawCard === true) {
+            message = "You Lose"
+        }
+        resultEl.textContent = message
+    }, 1000)
     standEl.classList.add('none')
 }
 console.log(psum)
