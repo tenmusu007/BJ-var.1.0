@@ -256,7 +256,7 @@ function comparison() {
     standEl.classList.add('none')
 }
 
-console.log(dsum)
-console.log(newdsum)
-console.log(dcards)
-console.log(dcards.includes(11))
+// console.log(dsum)
+// console.log(newdsum)
+// console.log(dcards)
+// console.log(dcards.includes(11))
