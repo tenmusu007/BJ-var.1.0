@@ -154,7 +154,7 @@ function insertPic(num) {
 // dealer zone 
 
 function dealerStart() {
-    dsumEl.classList.add('none')
+    dsumEl.classList.add('none');
     let randomType3 = Math.floor(Math.random() * 4);
     let kindOfType3 = type[randomType3];
     dealerdrawCard = true
@@ -238,8 +238,8 @@ function insertPic1(num) {
 // check final result
 function comparison() {
     dsumEl.classList.remove('none')
-    dsumEl.textContent = "Sum: " + dsum
     setTimeout(() =>{
+        dsumEl.textContent = "Sum: " + dsum
         if (dealerdrawCard === true && dealernodrawCard === true) {
             message = "You win!"
         } else if (dealerdrawCard === true && tie === true) {

@@ -122,6 +122,9 @@ p {
 }
 
 @media (max-width: 480px) {
+  .box-1 .none {
+    display: none;
+  }
   .box-1 h1 {
     display: flex;
     justify-content: center;
